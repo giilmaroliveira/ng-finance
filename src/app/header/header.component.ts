@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   menuList = [
     { link: '', description: 'Receitas' },
     { link: '', description: 'Despesas' },
-    { link: '', description: 'Categorias' },
+    { link: 'categories', description: 'Categorias' },
   ];
 
   constructor() { }
