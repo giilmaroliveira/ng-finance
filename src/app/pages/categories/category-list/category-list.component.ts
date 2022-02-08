@@ -15,6 +15,16 @@ export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
 
   ngOnInit(): void {
+    this.getAll();
+  }
+
+  remove(category: Category) {
+    this.categoryService.delete(category.id as number).subscribe(response => {
+      this.getAll();
+    }, error => console.log('error => ', error))
+  }
+
+  getAll() {
     this.categoryService.getAll().subscribe(response => {
       this.categories = response as Category[];
     }, error => console.log('error => ', error))
