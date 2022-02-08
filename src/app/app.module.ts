@@ -1,22 +1,13 @@
-import { InMemoryDatabase } from './in-memory.database';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { CoreModule } from './core/core.module';
 
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryDatabase),
-    HttpClientModule,
-  ],
+  declarations: [AppComponent],
+  imports: [AppRoutingModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })
