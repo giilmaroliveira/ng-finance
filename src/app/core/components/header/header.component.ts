@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   menuList = [
-    { link: '', description: 'Receitas' },
-    { link: '', description: 'Despesas' },
+    { link: 'entries', description: 'Lançamentos' },
     { link: 'categories', description: 'Categorias' },
   ];
 
