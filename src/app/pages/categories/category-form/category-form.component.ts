@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,10 +13,11 @@ import { CategoryService } from '../shared/category.service';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.css'],
 })
-export class CategoryFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit, AfterContentChecked {
   categoryForm!: FormGroup;
   category: Category = new Category();
   categoryId?: number;
+  pageTitle: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +35,10 @@ export class CategoryFormComponent implements OnInit {
     }
 
     this.buildCategoryForm();
+  }
+
+  ngAfterContentChecked(): void {
+    this.setPageTitle();
   }
 
   submitForm() {
@@ -81,10 +86,19 @@ export class CategoryFormComponent implements OnInit {
   private loadCategory() {
     this.categoryService.getById(this.categoryId as number).subscribe(
       (response) => {
-        this.category = response as Category;
+        this.category = response;
         this.categoryForm.patchValue(this.category);
       },
       (error) => console.log('error => ', error)
     );
+  }
+
+  private setPageTitle(): void {
+    if (this.categoryId === undefined) {
+      this.pageTitle = 'Cadastro de Nova Categoria';
+    } else {
+      const name = this.category.name || '';
+      this.pageTitle = `Editando categoria: ${name}`;
+    }
   }
 }

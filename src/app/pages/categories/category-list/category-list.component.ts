@@ -8,13 +8,13 @@ import { CategoryService } from './../shared/category.service';
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.css']
+  styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent implements OnInit {
-
   constructor(
     private categoryService: CategoryService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService
+  ) {}
 
   categories: Category[] = [];
 
@@ -23,16 +23,21 @@ export class CategoryListComponent implements OnInit {
   }
 
   remove(category: Category) {
-    this.categoryService.delete(category.id as number).subscribe(response => {
-      this.toastr.success('Categoria excluída com sucesso');
-      this.getAll();
-    }, error => console.log('error => ', error))
+    this.categoryService.delete(category.id as number).subscribe(
+      (response) => {
+        this.toastr.success('Categoria excluída com sucesso');
+        this.getAll();
+      },
+      (error) => console.log('error => ', error)
+    );
   }
 
   getAll() {
-    this.categoryService.getAll().subscribe(response => {
-      this.categories = response as Category[];
-    }, error => console.log('error => ', error))
+    this.categoryService.getAll().subscribe(
+      (response) => {
+        this.categories = response;
+      },
+      (error) => console.log('error => ', error)
+    );
   }
-
 }
