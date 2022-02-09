@@ -22,14 +22,25 @@
   <thead>
     <tr class="bg-primary text-light">
       <th>Lançamento</th>
-      <th>Ações</th>
+      <th class="text-right">Valor (R$)</th>
+      <th class="text-center">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let entry of entries">
       <td>
         <b>{{ entry.name }}</b><br>
+        <small class="text-success text-right">{{ entry.date }}</small><br>
         <small>{{ entry.description }}</small>
+      </td>
+      <td class="text-right">
+        <strong [class.text-success]="entry.type === 'revenue'" [class.text-danger]="entry.type === 'expense'">
+          {{ entry.amount }}
+        </strong>
+        <br>
+        <span class="badge bg-secondary">
+          {{ entry.paidText }}
+        </span>
       </td>
       <td>
         <a routerLink="/entries/{{ entry.id }}" class="btn btn-outline-primary btn-sm me-2">Editar</a>

@@ -22,9 +22,9 @@ export class InMemoryDatabase implements InMemoryDbService {
         description: 'Aluguel Casa',
         paid: true,
         date: '01/02/2022',
-        amount: 2000,
+        amount: '2000,00',
         type: 'expense',
-      },
+      } as Entry,
       {
         id: 2,
         name: 'Salário',
@@ -33,9 +33,9 @@ export class InMemoryDatabase implements InMemoryDbService {
         description: 'Recebimento do salário',
         paid: true,
         date: '20/01/2022',
-        amount: 5000,
+        amount: '5000,00',
         type: 'revenue',
-      },
+      } as Entry,
       {
         id: 3,
         name: 'Plano de Saúde',
@@ -44,9 +44,10 @@ export class InMemoryDatabase implements InMemoryDbService {
         description: 'Plano de Saúde - Família',
         paid: false,
         date: '20/02/2022',
-        amount: 1000,
+        amount: '1000,00',
         type: 'expense',
-      },
+      } as Entry,
+      new Entry(4, 'Restaurante', 'Almoço de negócios', 'expense', '300,00', '09/02/2022', true, categories[2].id, categories[2])
     ];
 
     return { categories, entries };

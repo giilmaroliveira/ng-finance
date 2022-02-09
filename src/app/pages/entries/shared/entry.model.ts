@@ -6,10 +6,14 @@ export class Entry {
     public name?: string,
     public description?: string,
     public type?: string,
-    public amount?: number,
+    public amount?: string,
     public date?: string,
     public paid?: boolean,
     public categoryId?: number,
     public category?: Category
   ) {}
+
+  get paidText(): string {
+    return this.paid ? 'Pago' : 'Pendente'; // this.paid === true
+  }
 }
