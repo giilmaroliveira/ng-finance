@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { Category } from '../shared/category.model';
 
 import { CategoryService } from '../shared/category.service';
@@ -20,7 +22,8 @@ export class CategoryFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -58,7 +61,7 @@ export class CategoryFormComponent implements OnInit {
   private create(category: Category) {
     this.categoryService.create(category).subscribe(
       (response) => {
-        window.alert('Categoria incluída com sucesso');
+        this.toastr.success('Categoria incluída com sucesso');
         this.router.navigate(['/categories']);
       },
       (error) => console.log('error => ', error)
@@ -66,18 +69,22 @@ export class CategoryFormComponent implements OnInit {
   }
 
   private update(category: Category) {
-    this.categoryService.update(category).subscribe((response) => {
-      window.alert('Categoria editada com sucesso');
-      this.router.navigate(['/categories']);
-    },
-    (error) => console.log('error => ', error));
+    this.categoryService.update(category).subscribe(
+      (response) => {
+        this.toastr.success('Categoria editada com sucesso');
+        this.router.navigate(['/categories']);
+      },
+      (error) => console.log('error => ', error)
+    );
   }
 
   private loadCategory() {
-    this.categoryService.getById(this.categoryId as number)
-      .subscribe(response => {
+    this.categoryService.getById(this.categoryId as number).subscribe(
+      (response) => {
         this.category = response as Category;
         this.categoryForm.patchValue(this.category);
-      }, error => console.log('error => ', error));
+      },
+      (error) => console.log('error => ', error)
+    );
   }
 }

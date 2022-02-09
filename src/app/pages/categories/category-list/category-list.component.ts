@@ -1,6 +1,8 @@
 import { Category } from './../shared/category.model';
 import { Component, OnInit } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { CategoryService } from './../shared/category.service';
 
 @Component({
@@ -10,7 +12,9 @@ import { CategoryService } from './../shared/category.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private toastr: ToastrService) { }
 
   categories: Category[] = [];
 
@@ -20,6 +24,7 @@ export class CategoryListComponent implements OnInit {
 
   remove(category: Category) {
     this.categoryService.delete(category.id as number).subscribe(response => {
+      this.toastr.success('Categoria excluída com sucesso');
       this.getAll();
     }, error => console.log('error => ', error))
   }
