@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 const toastrConfig = {
   timeOut: 5000,
@@ -16,7 +17,8 @@ const toastrConfig = {
 @NgModule({
   declarations: [
     FormFieldErrorComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PageHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ const toastrConfig = {
     CommonModule,
     ReactiveFormsModule,
     FormFieldErrorComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PageHeaderComponent
   ],
   providers: [
     { provide: ToastrService, useClass: ToastrService }

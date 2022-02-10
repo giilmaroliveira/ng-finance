@@ -2,18 +2,12 @@
   [items]="[{ text: 'Lançamentos', link: '/entries' }, { text: pageTitle }]"></app-breadcrumb>
 
 
-<div class="row mb-4">
-  <div class="col-md-9">
-    <h1 class="h2 border-start pl-2">
-      {{ pageTitle }}
-    </h1>
-  </div>
-  <div class="col-md-3">
-    <a routerLink="/entries" class="btn btn-secondary float-right">
-      Voltar
-    </a>
-  </div>
-</div>
+<app-page-header
+  [pageTitle]="pageTitle"
+  buttonClass="btn-light"
+  buttonLink="/entries"
+  buttonText="Voltar">
+</app-page-header>
 
 <form [formGroup]="entryForm" (submit)="submitForm()">
 
