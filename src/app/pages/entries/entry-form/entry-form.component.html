@@ -1,12 +1,7 @@
-<app-breadcrumb
-  [items]="[{ text: 'Lançamentos', link: '/entries' }, { text: pageTitle }]"></app-breadcrumb>
+<app-breadcrumb [items]="[{ text: 'Lançamentos', link: '/entries' }, { text: pageTitle }]"></app-breadcrumb>
 
 
-<app-page-header
-  [pageTitle]="pageTitle"
-  buttonClass="btn-primary"
-  buttonLink="/entries"
-  buttonText="Voltar">
+<app-page-header [pageTitle]="pageTitle" buttonClass="btn-primary" buttonLink="/entries" buttonText="Voltar">
 </app-page-header>
 
 <form [formGroup]="entryForm" (submit)="submitForm()">
@@ -56,11 +51,8 @@
         <!-- date -->
         <div class="form-group col-md-2">
           <label for="amount">Data</label>
-          <p-calendar
-            id="date"
-            formControlName="date"
-            inputStyleClass="form-control" dataType="string"
-            dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true">
+          <p-calendar id="date" formControlName="date" inputStyleClass="form-control" dataType="string"
+            dateFormat="dd/mm/yy" [showButtonBar]="true">
           </p-calendar>
 
           <app-form-field-error [form]="date"></app-form-field-error>
