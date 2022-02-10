@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,10 +14,12 @@ const toastrConfig = {
   declarations: [],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot(toastrConfig)
   ],
   exports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: ToastrService, useClass: ToastrService }

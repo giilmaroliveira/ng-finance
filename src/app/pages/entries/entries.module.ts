@@ -7,10 +7,12 @@ import { EntryListComponent } from './entry-list/entry-list.component';
 
 import { CalendarModule } from 'primeng/calendar';
 import { IMaskModule} from 'angular-imask';
+import { EntryFormComponent } from './entry-form/entry-form.component';
 
 @NgModule({
   declarations: [
-    EntryListComponent
+    EntryListComponent,
+    EntryFormComponent
   ],
   imports: [
     SharedModule,
