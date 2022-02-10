@@ -21,10 +21,7 @@
           <label for="name">Nome:</label>
           <input type="text" class="form-control" id="name" name="name" formControlName="name">
 
-          <div class="text-danger" *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
-            <div *ngIf="categoryForm.get('name')?.errors?.['required']">dado obrigatório</div>
-            <div *ngIf="categoryForm.get('name')?.errors?.['minlength']">deve ter no mínimo 3 caracteres</div>
-          </div>
+          <app-form-field-error [form]="name"></app-form-field-error>
 
         </div>
 

@@ -1,5 +1,10 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -27,7 +32,9 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     private toastr: ToastrService
   ) {}
 
-  get name(): AbstractControl | null { return this.categoryForm.get('name'); }
+  get name(): AbstractControl {
+    return this.categoryForm.get('name') as AbstractControl;
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

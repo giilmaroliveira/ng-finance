@@ -28,9 +28,7 @@
             <option value="revenue">Receita</option>
           </select>
 
-          <div class="text-danger" *ngIf="entryForm.get('type')?.invalid && entryForm.get('type')?.touched">
-            <div *ngIf="entryForm.get('type')?.errors?.['required']">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form]="type"></app-form-field-error>
         </div>
 
         <!-- name -->
@@ -38,10 +36,7 @@
           <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
 
-          <div class="text-danger" *ngIf="entryForm.get('name')?.invalid && entryForm.get('name')?.touched">
-            <div *ngIf="entryForm.get('name')?.errors?.['required']">dado obrigatório</div>
-            <div *ngIf="entryForm.get('name')?.errors?.['minlength']">deve ter no mínimo 2 caracteres</div>
-          </div>
+          <app-form-field-error [form]="name"></app-form-field-error>
         </div>
 
         <!-- amount -->
@@ -55,9 +50,7 @@
               formControlName="amount">
           </div>
 
-          <div class="text-danger" *ngIf="entryForm.get('amount')?.invalid && entryForm.get('amount')?.touched">
-            <div *ngIf="entryForm.get('amount')?.errors?.['required']">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form]="amount"></app-form-field-error>
         </div>
 
         <!-- date -->
@@ -70,9 +63,7 @@
             dateFormat="dd/mm/yy" [locale]="ptBR" [showButtonBar]="true">
           </p-calendar>
 
-          <div class="text-danger" *ngIf="entryForm.get('date')?.invalid && entryForm.get('date')?.touched">
-            <div *ngIf="entryForm.get('date')?.errors?.['required']">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form]="date"></app-form-field-error>
         </div>
 
       </div>
@@ -88,9 +79,7 @@
               [class.active]="entryForm.get('paid')?.value == false" class="btn btn-outline-primary">Pendente</label>
           </div>
 
-          <div class="text-danger" *ngIf="entryForm.get('paid')?.invalid && entryForm.get('paid')?.touched">
-            <div *ngIf="entryForm.get('paid')?.errors?.['required']">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form]="paid"></app-form-field-error>
         </div>
 
         <!-- categoryId -->
@@ -101,9 +90,7 @@
             <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
           </select>
 
-          <div class="text-danger" *ngIf="entryForm.get('categoryId')?.invalid && entryForm.get('categoryId')?.touched">
-            <div *ngIf="entryForm.get('categoryId')?.errors?.['required']">dado obrigatório</div>
-          </div>
+          <app-form-field-error [form]="categoryId"></app-form-field-error>
         </div>
 
         <!-- description -->

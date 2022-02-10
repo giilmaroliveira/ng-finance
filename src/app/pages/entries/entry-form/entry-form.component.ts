@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -75,6 +75,34 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     today: 'Hoje',
     clear: 'Limpar',
   };
+
+  get name(): AbstractControl {
+    return this.entryForm.get('name') as AbstractControl;
+  }
+
+  get description(): AbstractControl {
+    return this.entryForm.get('description') as AbstractControl;
+  }
+
+  get type(): AbstractControl {
+    return this.entryForm.get('type') as AbstractControl;
+  }
+
+  get amount(): AbstractControl {
+    return this.entryForm.get('amount') as AbstractControl;
+  }
+
+  get date(): AbstractControl {
+    return this.entryForm.get('date') as AbstractControl;
+  }
+
+  get paid(): AbstractControl {
+    return this.entryForm.get('paid') as AbstractControl;
+  }
+
+  get categoryId(): AbstractControl {
+    return this.entryForm.get('categoryId') as AbstractControl;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
